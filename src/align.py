@@ -16,7 +16,46 @@ def align(x: str, y: str, edits: str) -> tuple[str, str]:
     ('ACCACAGT-CATA', 'A-CAGAGTACAAA')
 
     """
-    return "", ""
+
+    # Better variable name, I think
+    seq1 = x
+    seq2 = y
+
+    # The two aligned files are saved at there variables
+    align1 = ""
+    align2 = ""
+
+    # Extra int adds to i, if a gap has accured. Otherwise the alignments are not recreated properly
+    extra_int1 = 0 
+    extra_int2 = 0
+
+    for i in range(len(edits)):
+        #print(i)
+        #print(edits[i])
+        if edits[i] == "M": 
+            # If the two bases are matched or mismatched the corresponding bases are appended to the align variables.
+            align1 += seq1[i-extra_int1]
+            align2 += seq2[i-extra_int2]
+
+        elif edits[i] == "D":
+            # If the second sequence contains a gap, a gap character is added and 1 is added to the extra int variable.
+            align1 += seq1[i-extra_int1]
+            align2 += "-"
+            extra_int2 += 1
+
+        elif edits[i] == "I":
+            # If the first sequence contains a gap, a gap character is added and 1 is added to the extra int variable.
+            align1 += "-"
+            align2 += seq2[i-extra_int2]
+            extra_int1 += 1
+
+        else:
+            print("Invalid edit-string")
+
+        #print(align1, align2)
+
+    
+    return (align1, align2)
 
 
 def edits(x: str, y: str) -> str:
@@ -33,4 +72,43 @@ def edits(x: str, y: str) -> str:
     'MDMMMMMMIMMMM'
 
     """
-    return ""
+
+    # Better variable name, I think
+    align1 = x
+    align2 = y
+
+    # The two aligned files are saved at there variables
+    edits = ""
+
+    if len(align1) == len(align2):
+
+        for i in range(len(align1)):
+
+            if align1[i] != "-" and align2[i] != "-":
+                # If the bases are matches or mismatches, then M is added to edits
+                edits += "M"
+
+            elif align1[i] != "-" and align2[i] == "-":
+                # If there is a gap, "-", in align2, then a D is added
+                edits += "D"
+
+            elif align1[i] == "-" and align2[i] != "-":
+                # If there is a gap, "-", in align1, then a I is added
+                edits += "I"
+
+            else:
+                print("Invalid alignment")
+
+    else:
+        print("Invalid alignment")
+
+    return edits
+
+
+
+
+### SKAL SLETTES EFTER ###
+
+#print(align("ACCACAGTCATA", "ACAGAGTACAAA", "MDMMMMMMIMMMM"))
+
+#print(edits('ACCACAGT-CATA', 'A-CAGAGTACAAA'))
