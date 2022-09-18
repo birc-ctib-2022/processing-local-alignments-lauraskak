@@ -30,8 +30,7 @@ def align(x: str, y: str, edits: str) -> tuple[str, str]:
     extra_int2 = 0
 
     for i in range(len(edits)):
-        #print(i)
-        #print(edits[i])
+
         if edits[i] == "M": 
             # If the two bases are matched or mismatched the corresponding bases are appended to the align variables.
             align1 += seq1[i-extra_int1]
@@ -52,9 +51,6 @@ def align(x: str, y: str, edits: str) -> tuple[str, str]:
         else:
             print("Invalid edit-string")
 
-        #print(align1, align2)
-
-    
     return (align1, align2)
 
 
@@ -103,12 +99,3 @@ def edits(x: str, y: str) -> str:
         print("Invalid alignment")
 
     return edits
-
-
-
-
-### SKAL SLETTES EFTER ###
-
-#print(align("ACCACAGTCATA", "ACAGAGTACAAA", "MDMMMMMMIMMMM"))
-
-#print(edits('ACCACAGT-CATA', 'A-CAGAGTACAAA'))
