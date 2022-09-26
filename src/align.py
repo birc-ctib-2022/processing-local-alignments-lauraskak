@@ -21,9 +21,6 @@ def align(x: str, y: str, edits: str) -> tuple[str, str]:
     seq1 = x
     seq2 = y
 
-    # print(seq1, seq2)
-    # print(edits)
-
     # The two aligned files are saved at there variables
     align1 = ""
     align2 = ""
@@ -40,27 +37,18 @@ def align(x: str, y: str, edits: str) -> tuple[str, str]:
             align2 += seq2[int2]
             int1 += 1
             int2 += 1
-            # print(o)
-            # print(int1, int2)
-            # print(align1, align2)
 
         elif o == "D":
             # If the second sequence contains a gap, a gap character is added and 1 is added to the extra int variable.
             align1 += seq1[int1]
             align2 += "-"
             int1 += 1
-            # print(o)
-            # print(int1, int2)
-            # print(align1, align2)
 
         elif o == "I":
             # If the first sequence contains a gap, a gap character is added and 1 is added to the extra int variable.
             align1 += "-"
             align2 += seq2[int2]
             int2 += 1
-            # print(o)
-            # print(int1, int2)
-            # print(align1, align2)
 
     return (align1, align2)
 
@@ -112,4 +100,4 @@ def edits(x: str, y: str) -> str:
     return edits
 
 
-print(align("ACCACAGTCATA", "ACAGAGTACAAA", "MDMMMMMMIMMMM"))
+#print(align("ACCACAGTCATA", "ACAGAGTACAAA", "MDMMMMMMIMMMM"))
