@@ -21,35 +21,46 @@ def align(x: str, y: str, edits: str) -> tuple[str, str]:
     seq1 = x
     seq2 = y
 
+    # print(seq1, seq2)
+    # print(edits)
+
     # The two aligned files are saved at there variables
     align1 = ""
     align2 = ""
 
     # Extra int adds to i, if a gap has accured. Otherwise the alignments are not recreated properly
-    extra_int1 = 0 
-    extra_int2 = 0
+    int1 = 0 
+    int2 = 0
 
-    for i in range(len(edits)):
+    for o in edits:
 
-        if edits[i] == "M": 
+        if o == "M": 
             # If the two bases are matched or mismatched the corresponding bases are appended to the align variables.
-            align1 += seq1[i-extra_int1]
-            align2 += seq2[i-extra_int2]
+            align1 += seq1[int1]
+            align2 += seq2[int2]
+            int1 += 1
+            int2 += 1
+            # print(o)
+            # print(int1, int2)
+            # print(align1, align2)
 
-        elif edits[i] == "D":
+        elif o == "D":
             # If the second sequence contains a gap, a gap character is added and 1 is added to the extra int variable.
-            align1 += seq1[i-extra_int1]
+            align1 += seq1[int1]
             align2 += "-"
-            extra_int2 += 1
+            int1 += 1
+            # print(o)
+            # print(int1, int2)
+            # print(align1, align2)
 
-        elif edits[i] == "I":
+        elif o == "I":
             # If the first sequence contains a gap, a gap character is added and 1 is added to the extra int variable.
             align1 += "-"
-            align2 += seq2[i-extra_int2]
-            extra_int1 += 1
-
-        else:
-            print("Invalid edit-string")
+            align2 += seq2[int2]
+            int2 += 1
+            # print(o)
+            # print(int1, int2)
+            # print(align1, align2)
 
     return (align1, align2)
 
@@ -99,3 +110,6 @@ def edits(x: str, y: str) -> str:
         print("Invalid alignment")
 
     return edits
+
+
+print(align("ACCACAGTCATA", "ACAGAGTACAAA", "MDMMMMMMIMMMM"))
