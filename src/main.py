@@ -134,24 +134,32 @@ if __name__ == '__main__':
 
     # Checking arguments and getting the files
     infile, outfile = sys.stdin, sys.stdout
+    #print(infile, outfile)
     match len(sys.argv):
         case 2:
             # zero file arguments
             pass
         case 3:
             # one file argument
-            print("Feature not implemented.", file=sys.stderr)
-            sys.exit(1)
+            ### INDSÆT KODE som tager inputfilen og printer output i terminalen
+            infile = open(sys.argv[2], "r")
+            #print("Feature not implemented. input file", file=sys.stderr)
+            #sys.exit(1)
         case 4:
             # two file arguments
-            print("Feature not implemented.", file=sys.stderr)
-            sys.exit(1)
+            ### INDSÆT KODE som tager inputfilen og printer output i en ny fil.
+            print(infile)
+            infile = open(sys.argv[2], "r")
+            outfile = open(sys.argv[3], "w")
+            #print("Feature not implemented. input file and output file", file=sys.stderr)
+            #sys.exit(1)
         case _:
             # either too few or too many arguments
             print("Incorrect number of arguments.", file=sys.stderr)
             sys.exit(1)
 
     if sys.argv[1] == "to_cig":
+        print(infile, outfile)
         to_cig_cmd(infile, outfile)
     elif sys.argv[1] == "from_cig":
         from_cig_cmd(infile, outfile)
