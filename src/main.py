@@ -134,20 +134,17 @@ if __name__ == '__main__':
 
     # Checking arguments and getting the files
     infile, outfile = sys.stdin, sys.stdout
-    #print(infile, outfile)
     match len(sys.argv):
         case 2:
             # zero file arguments
             pass
         case 3:
             # one file argument
-            ### INDSÆT KODE som tager inputfilen og printer output i terminalen
             infile = open(sys.argv[2], "r")
             #print("Feature not implemented. input file", file=sys.stderr)
             #sys.exit(1)
         case 4:
             # two file arguments
-            ### INDSÆT KODE som tager inputfilen og printer output i en ny fil.
             print(infile)
             infile = open(sys.argv[2], "r")
             outfile = open(sys.argv[3], "w")
