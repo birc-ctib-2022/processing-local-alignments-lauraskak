@@ -145,7 +145,6 @@ if __name__ == '__main__':
             #sys.exit(1)
         case 4:
             # two file arguments
-            print(infile)
             infile = open(sys.argv[2], "r")
             outfile = open(sys.argv[3], "w")
             #print("Feature not implemented. input file and output file", file=sys.stderr)
@@ -156,7 +155,6 @@ if __name__ == '__main__':
             sys.exit(1)
 
     if sys.argv[1] == "to_cig":
-        print(infile, outfile)
         to_cig_cmd(infile, outfile)
     elif sys.argv[1] == "from_cig":
         from_cig_cmd(infile, outfile)
